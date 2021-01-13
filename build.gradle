@@ -10,19 +10,18 @@ sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
-	maven { url 'https://repo.spring.io/milestone' }
 }
 
 ext {
+	set('springBootVersion', "2.4.1")
 	set('springCloudVersion', "2020.0.0")
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-parent:2.4.0'
+	compile "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+	compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'io.springfox:springfox-swagger2:2.9.2'
-	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

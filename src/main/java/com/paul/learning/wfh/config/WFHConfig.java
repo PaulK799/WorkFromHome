@@ -1,6 +1,6 @@
 package com.paul.learning.wfh.config;
 
-import com.paul.learning.wfh.WfhApplication;
+import com.paul.learning.wfh.SpringBoot;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -9,7 +9,7 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
 /**
- * Configuration class for {@link WfhApplication}.
+ * Configuration class for {@link SpringBoot}.
  */
 @Configuration
 public class WFHConfig {
@@ -25,6 +25,7 @@ public class WFHConfig {
                 .select()
                 .apis(RequestHandlerSelectors.any())
                 .paths(PathSelectors.any())
-                .build();
+                .build()
+                .enable(true);
     }
 }
