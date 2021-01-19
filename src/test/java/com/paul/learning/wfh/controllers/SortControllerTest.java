@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.paul.learning.wfh.config.WFHConfig;
 import com.paul.learning.wfh.input.SortInput;
 import com.paul.learning.wfh.input.SortType;
+import com.paul.learning.wfh.services.impl.MergeSortService;
+import com.paul.learning.wfh.services.impl.QuickSortService;
 import com.paul.learning.wfh.services.impl.StandardSortService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -45,6 +47,12 @@ public class SortControllerTest {
     @Spy
     private StandardSortService sortService;
 
+    @Spy
+    private MergeSortService mergeSortService;
+
+    @Spy
+    private QuickSortService quickSortService;
+
     @InjectMocks
     private SortController sortController;
 
@@ -81,15 +89,15 @@ public class SortControllerTest {
     }
 
     /**
-     * Test the default ouput of the POST /sort endpoint defined in {@link SortController}.
+     * Test the default ouput of the POST /sort endpoint defined in {@link SortController} using an undefined sort type.
      *
      * @throws Exception default exception handling.
      */
     @Test
-    public void testSortPOST() throws Exception {
+    public void testDefaultSortPOST() throws Exception {
         SortInput input = new SortInput();
         input.setValue(DEFAULT_VALUE);
-        input.setType(SortType.MERGE.getType());
+        input.setType("blah");
 
         // Serialize to JSON.
         ObjectMapper mapper = new ObjectMapper();
@@ -104,6 +112,33 @@ public class SortControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("input", DEFAULT_VALUE))
+                .andExpect(view().name("sort"));
+    }
+
+    /**
+     * Test the ouput of the POST /sort endpoint defined in {@link SortController} using Merge sort.
+     *
+     * @throws Exception default exception handling.
+     */
+    @Test
+    public void testMergeSortPOST() throws Exception {
+        SortInput input = new SortInput();
+        input.setValue("5432");
+        input.setType(SortType.MERGE.getType());
+
+        // Serialize to JSON.
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(SerializationFeature.WRAP_ROOT_VALUE, false);
+        ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
+        String requestJson = ow.writeValueAsString(input);
+
+        this.mockMvc.perform(post("/sort")
+                .content(requestJson)
+                .contentType(MediaType.APPLICATION_JSON)
+                .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("input", "2345"))
                 .andExpect(view().name("sort"));
     }
 }
