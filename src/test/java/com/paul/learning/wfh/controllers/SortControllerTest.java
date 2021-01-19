@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.paul.learning.wfh.config.WFHConfig;
 import com.paul.learning.wfh.input.SortInput;
 import com.paul.learning.wfh.input.SortType;
+import com.paul.learning.wfh.services.impl.MergeSortService;
+import com.paul.learning.wfh.services.impl.QuickSortService;
 import com.paul.learning.wfh.services.impl.StandardSortService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -44,6 +46,12 @@ public class SortControllerTest {
 
     @Spy
     private StandardSortService sortService;
+
+    @Spy
+    private MergeSortService mergeSortService;
+
+    @Spy
+    private QuickSortService quickSortService;
 
     @InjectMocks
     private SortController sortController;
@@ -86,9 +94,9 @@ public class SortControllerTest {
      * @throws Exception default exception handling.
      */
     @Test
-    public void testSortPOST() throws Exception {
+    public void testMergeSortPOST() throws Exception {
         SortInput input = new SortInput();
-        input.setValue(DEFAULT_VALUE);
+        input.setValue("5432");
         input.setType(SortType.MERGE.getType());
 
         // Serialize to JSON.
@@ -103,7 +111,7 @@ public class SortControllerTest {
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("input", DEFAULT_VALUE))
+                .andExpect(model().attribute("input", "2345"))
                 .andExpect(view().name("sort"));
     }
 }
