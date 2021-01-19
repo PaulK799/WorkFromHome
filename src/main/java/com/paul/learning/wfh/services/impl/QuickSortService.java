@@ -5,9 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+/**
+ * A class for implementing merge sort.
+ */
 @Service
-public class StandardSortService implements SortService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(StandardSortService.class);
+public class QuickSortService implements SortService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(QuickSortService.class);
 
     /**
      * Implementation of the sort function.
@@ -17,7 +20,7 @@ public class StandardSortService implements SortService {
      */
     @Override
     public String sort(String value) {
-        LOGGER.info("Unknown Sort Type, Default Sort");
+        LOGGER.info("Starting Quick Sort");
         return value;
     }
 }

@@ -1,6 +1,8 @@
 package com.paul.learning.wfh.controllers;
 
 import com.paul.learning.wfh.input.SortInput;
+import com.paul.learning.wfh.services.impl.MergeSortService;
+import com.paul.learning.wfh.services.impl.QuickSortService;
 import com.paul.learning.wfh.services.impl.StandardSortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,12 @@ public class SortController {
 
     @Autowired
     protected StandardSortService sortService;
+
+    @Autowired
+    protected MergeSortService mergeSortService;
+
+    @Autowired
+    protected QuickSortService quickSortService;
 
     /**
      * The GET Request for the sort endpoint.
@@ -52,17 +60,15 @@ public class SortController {
     @PostMapping("/sort")
     public String sort(@RequestBody SortInput input, Model model) {
         LOGGER.info("Sort Input Before : {}", input.getValue());
-        String sortedInput = null;
+        String sortedInput;
         String value = input.getValue();
 
         String type = input.getType();
-        // Sort based on the Type.
         if (MERGE.getType().equals(type)) {
-            LOGGER.info("Starting Merge Sort");
+            sortedInput = mergeSortService.sort(value);
         } else if (QUICK.getType().equals(type)) {
-            LOGGER.info("Starting Quick Sort");
+            sortedInput = quickSortService.sort(value);
         } else {
-            LOGGER.info("Unknown Sort Type, Default Sort");
             sortedInput = sortService.sort(value);
         }
 
