@@ -1,9 +1,10 @@
 package com.paul.learning.wfh;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WFHApplication {
+public class WorkFromHome {
 
 
     /**
@@ -12,7 +13,7 @@ public class WFHApplication {
      * @param args The args.
      */
     public static void main(String[] args) {
-        org.springframework.boot.SpringApplication.run(WFHApplication.class, args);
+        SpringApplication.run(WorkFromHome.class, args);
     }
 
 }

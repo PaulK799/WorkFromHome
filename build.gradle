@@ -23,6 +23,7 @@ dependencies {
 	implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springBootVersion}"
 	implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testCompile  'org.springframework.boot:spring-boot-starter-test'

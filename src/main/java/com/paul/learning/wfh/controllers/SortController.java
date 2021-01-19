@@ -1,13 +1,19 @@
 package com.paul.learning.wfh.controllers;
 
-import com.paul.learning.wfh.config.WFHConfig;
+import com.paul.learning.wfh.input.SortInput;
+import com.paul.learning.wfh.services.impl.StandardSortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import static com.paul.learning.wfh.input.SortType.MERGE;
+import static com.paul.learning.wfh.input.SortType.QUICK;
 
 /**
  * Class defining mapping for sorting
@@ -17,17 +23,51 @@ public class SortController {
     // private variables
     private static final Logger LOGGER = LoggerFactory.getLogger(SortController.class);
 
-    // protected variables.
-    protected static final String DEFAULT_SORT = "1234";
-
     @Autowired
-    protected WFHConfig wfhConfig;
+    protected StandardSortService sortService;
 
+    /**
+     * The GET Request for the sort endpoint.
+     *
+     * @param input - The {@link RequestParam} input being processed.
+     * @param model - The {@link Model} being processed.
+     * @return The Sort {@link Model} sort.
+     */
     @GetMapping("/sort")
-    public String sort(@RequestParam(name="input", required = false, defaultValue = DEFAULT_SORT) String input, Model model) {
-        String sortDefault = wfhConfig.getSortDefault();
-        LOGGER.debug("Sort Default: {}", sortDefault);
-        model.addAttribute("input", input);
+    public String sort(@RequestParam(name = "input", required = false, defaultValue = "${wfh.sort.default}") String input, Model model) {
+        LOGGER.info("Sort Input Before : {}", input);
+        String sortedInput = sortService.sort(input);
+        LOGGER.info("Sort Input After : {}", sortedInput);
+        model.addAttribute("input", sortedInput);
+        return "sort";
+    }
+
+    /**
+     * Define a POST endpoint using {@link SortInput} structure.
+     *
+     * @param input - The {@link SortInput} to be processed.
+     * @param model - The {@link Model} being processed.
+     * @return The Model sort.
+     */
+    @PostMapping("/sort")
+    public String sort(@RequestBody SortInput input, Model model) {
+        LOGGER.info("Sort Input Before : {}", input.getValue());
+        String sortedInput = null;
+        String value = input.getValue();
+
+        String type = input.getType();
+        // Sort based on the Type.
+        if (MERGE.getType().equals(type)) {
+            LOGGER.info("Starting Merge Sort");
+        } else if (QUICK.getType().equals(type)) {
+            LOGGER.info("Starting Quick Sort");
+        } else {
+            LOGGER.info("Unknown Sort Type, Default Sort");
+            sortedInput = sortService.sort(value);
+        }
+
+        LOGGER.info("Sort Input After : {}", sortedInput);
+        model.addAttribute("input", sortedInput);
         return "sort";
     }
 }
