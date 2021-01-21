@@ -2,11 +2,12 @@ package com.paul.learning.wfh.patterns.builder;
 
 import java.util.Objects;
 
+import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
+
 /**
  * A class representing a {@link Person} written using the Builder Design Pattern.
  */
 public final class Person {
-    private static final String SEPARATOR_COMMA = ",";
     private int age;
     private String firstName;
     private String surName;
