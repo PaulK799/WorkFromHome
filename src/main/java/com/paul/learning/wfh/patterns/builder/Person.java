@@ -6,6 +6,7 @@ import java.util.Objects;
  * A class representing a {@link Person} written using the Builder Design Pattern.
  */
 public final class Person {
+    private static final String SEPARATOR_COMMA = ",";
     private int age;
     private String firstName;
     private String surName;
@@ -128,5 +129,15 @@ public final class Person {
     @Override
     public int hashCode() {
         return Objects.hash(age, firstName, surName);
+    }
+
+    /**
+     * Add implementation of toString for the {@link Person}.
+     *
+     * @return The constructed string.
+     */
+    @Override
+    public String toString() {
+        return "Person: {" + age + SEPARATOR_COMMA + firstName + SEPARATOR_COMMA + surName + "}";
     }
 }
