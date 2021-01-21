@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
 
@@ -11,8 +12,8 @@ import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
  * A {@link LinkedNode} implementation.
  */
 public class LinkedNode extends Node {
-    private Integer parentId;
-    private LinkedList<Integer> childIds;
+    private AtomicInteger parentId;
+    private LinkedList<AtomicInteger> childIds;
 
     /**
      * Instantiate the {@link Node} with an id and a starting {@link Position}.
@@ -22,7 +23,7 @@ public class LinkedNode extends Node {
      * @param x        - The x axis starting position of the {@link Node}.
      * @param y        - The y axis startion position of the {@link Node}.
      */
-    public LinkedNode(int id, Integer parentId, int x, int y) {
+    public LinkedNode(AtomicInteger id, AtomicInteger parentId, int x, int y) {
         super(id, x, y);
         if (parentId != null) {
             this.parentId = parentId;
@@ -34,17 +35,8 @@ public class LinkedNode extends Node {
      *
      * @return The parentId.
      */
-    public Integer getParentId() {
+    public AtomicInteger getParentId() {
         return parentId;
-    }
-
-    /**
-     * Update the parentId for the {@link LinkedNode}.
-     *
-     * @param parentId - The parentId to be set.
-     */
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
     }
 
     /**
@@ -52,7 +44,7 @@ public class LinkedNode extends Node {
      *
      * @return The parentId.
      */
-    public List<Integer> getChildIds() {
+    public List<AtomicInteger> getChildIds() {
         if (childIds == null) {
             childIds = new LinkedList<>();
         }
@@ -111,8 +103,9 @@ public class LinkedNode extends Node {
      */
     @Override
     public LinkedNode addNode(int id) {
-        this.getChildIds().add(id);
-        return new LinkedNode(id, this.getId(),
+        AtomicInteger atomicInteger = new AtomicInteger(id);
+        this.getChildIds().add(atomicInteger);
+        return new LinkedNode(atomicInteger, this.getId(),
                 this.getPosition().getXAxis(), this.getPosition().getYAxis());
     }
 }

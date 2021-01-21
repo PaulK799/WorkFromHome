@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * A class for testing a {@link LinkedNode}.
  */
@@ -15,7 +17,7 @@ public class LinkedNodeTest {
 
     @Test
     public void addNodeTest() {
-        LinkedNode linkedNode = new LinkedNode(1, null, 0, 0);
+        LinkedNode linkedNode = new LinkedNode(new AtomicInteger(1), null, 0, 0);
         LOGGER.info("Original:{}", linkedNode.toString());
         LinkedNode copyNode = linkedNode.addNode(2);
         LOGGER.info("After Add:{}", linkedNode.toString());

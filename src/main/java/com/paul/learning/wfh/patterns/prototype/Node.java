@@ -1,6 +1,7 @@
 package com.paul.learning.wfh.patterns.prototype;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
 
@@ -8,7 +9,7 @@ import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
  * A class representing a single {@link Node}.
  */
 public abstract class Node {
-    private int id;
+    private AtomicInteger id;
     private Position position;
 
     /**
@@ -18,7 +19,7 @@ public abstract class Node {
      * @param x  - The x axis starting position of the {@link Node}.
      * @param y  - The y axis startion position of the {@link Node}.
      */
-    public Node(int id, int x, int y) {
+    public Node(AtomicInteger id, int x, int y) {
         this.id = id;
         this.position = new Position(x, y);
     }
@@ -28,7 +29,7 @@ public abstract class Node {
      *
      * @return The id.
      */
-    public int getId() {
+    public AtomicInteger getId() {
         return id;
     }
 
