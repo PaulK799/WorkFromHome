@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.singleton;
+package com.paul.learning.wfh.patterns.creational.singleton;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

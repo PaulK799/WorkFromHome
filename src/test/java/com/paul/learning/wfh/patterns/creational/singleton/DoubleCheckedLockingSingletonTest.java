@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.singleton;
+package com.paul.learning.wfh.patterns.creational.singleton;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

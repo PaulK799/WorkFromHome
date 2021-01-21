@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.singleton;
+package com.paul.learning.wfh.patterns.creational.singleton;
 
 /**
  * A class prescribing the {@link DoubleCheckedLockingSingleton} based Singleton implementation.

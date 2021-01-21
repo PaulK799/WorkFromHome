@@ -1,8 +1,8 @@
-package com.paul.learning.wfh.patterns.factory;
+package com.paul.learning.wfh.patterns.creational.factory;
 
-import com.paul.learning.wfh.patterns.factory.impl.Circle;
-import com.paul.learning.wfh.patterns.factory.impl.Square;
-import com.paul.learning.wfh.patterns.factory.impl.Rectangle;
+import com.paul.learning.wfh.patterns.creational.factory.impl.Circle;
+import com.paul.learning.wfh.patterns.creational.factory.impl.Square;
+import com.paul.learning.wfh.patterns.creational.factory.impl.Rectangle;
 
 /**
  * Factory class for the {@link Shape} interface.

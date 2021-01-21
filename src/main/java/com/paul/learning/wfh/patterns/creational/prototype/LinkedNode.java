@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.prototype;
+package com.paul.learning.wfh.patterns.creational.prototype;
 
 import java.util.LinkedList;
 import java.util.List;

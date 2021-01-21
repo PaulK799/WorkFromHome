@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.factory;
+package com.paul.learning.wfh.patterns.creational.factory;
 
 /**
  * Interface for a {@link Shape}

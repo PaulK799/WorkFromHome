@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.factory;
+package com.paul.learning.wfh.patterns.creational.factory;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

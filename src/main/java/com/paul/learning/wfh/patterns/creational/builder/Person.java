@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.patterns.builder;
+package com.paul.learning.wfh.patterns.creational.builder;
 
 import java.util.Objects;
 

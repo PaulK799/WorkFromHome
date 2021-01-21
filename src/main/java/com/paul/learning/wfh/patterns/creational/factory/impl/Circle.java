@@ -1,6 +1,6 @@
-package com.paul.learning.wfh.patterns.factory.impl;
+package com.paul.learning.wfh.patterns.creational.factory.impl;
 
-import com.paul.learning.wfh.patterns.factory.Shape;
+import com.paul.learning.wfh.patterns.creational.factory.Shape;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
