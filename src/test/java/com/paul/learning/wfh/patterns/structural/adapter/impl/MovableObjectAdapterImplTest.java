@@ -1,7 +1,5 @@
-package com.paul.learning.wfh.patterns.structural.impl;
+package com.paul.learning.wfh.patterns.structural.adapter.impl;
 
-import com.paul.learning.wfh.patterns.structural.adapter.impl.Ball;
-import com.paul.learning.wfh.patterns.structural.adapter.impl.MovableObjectAdapterImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
