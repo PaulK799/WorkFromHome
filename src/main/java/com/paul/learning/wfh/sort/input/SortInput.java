@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.input;
+package com.paul.learning.wfh.sort.input;
 
 /**
  * The {@link SortInput} class.

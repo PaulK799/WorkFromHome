@@ -1,9 +1,9 @@
-package com.paul.learning.wfh.controllers;
+package com.paul.learning.wfh.sort.controllers;
 
-import com.paul.learning.wfh.input.SortInput;
-import com.paul.learning.wfh.services.impl.MergeSortService;
-import com.paul.learning.wfh.services.impl.QuickSortService;
-import com.paul.learning.wfh.services.impl.StandardSortService;
+import com.paul.learning.wfh.sort.input.SortInput;
+import com.paul.learning.wfh.sort.services.impl.MergeSortService;
+import com.paul.learning.wfh.sort.services.impl.QuickSortService;
+import com.paul.learning.wfh.sort.services.impl.StandardSortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import static com.paul.learning.wfh.input.SortType.MERGE;
-import static com.paul.learning.wfh.input.SortType.QUICK;
+import static com.paul.learning.wfh.sort.input.SortType.MERGE;
+import static com.paul.learning.wfh.sort.input.SortType.QUICK;
 
 /**
  * Class defining mapping for sorting

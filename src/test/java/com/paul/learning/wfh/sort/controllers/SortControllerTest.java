@@ -1,14 +1,15 @@
-package com.paul.learning.wfh.controllers;
+package com.paul.learning.wfh.sort.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.paul.learning.wfh.config.WFHConfig;
-import com.paul.learning.wfh.input.SortInput;
-import com.paul.learning.wfh.input.SortType;
-import com.paul.learning.wfh.services.impl.MergeSortService;
-import com.paul.learning.wfh.services.impl.QuickSortService;
-import com.paul.learning.wfh.services.impl.StandardSortService;
+import com.paul.learning.wfh.sort.input.SortInput;
+import com.paul.learning.wfh.sort.input.SortType;
+import com.paul.learning.wfh.sort.controllers.SortController;
+import com.paul.learning.wfh.sort.services.impl.MergeSortService;
+import com.paul.learning.wfh.sort.services.impl.QuickSortService;
+import com.paul.learning.wfh.sort.services.impl.StandardSortService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

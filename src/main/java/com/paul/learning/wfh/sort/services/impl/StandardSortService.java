@@ -1,6 +1,6 @@
-package com.paul.learning.wfh.services.impl;
+package com.paul.learning.wfh.sort.services.impl;
 
-import com.paul.learning.wfh.services.SortService;
+import com.paul.learning.wfh.sort.services.SortService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

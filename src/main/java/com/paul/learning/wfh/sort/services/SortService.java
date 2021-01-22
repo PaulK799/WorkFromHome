@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.services;
+package com.paul.learning.wfh.sort.services;
 
 /**
  * Interface for performing Sorting algorithms.
