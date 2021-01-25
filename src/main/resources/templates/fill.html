@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Flood Fill</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <p th:text="'Red: ' + ${input.red}"/>
+        <p th:text="'Green: ' + ${input.green}" />
+        <p th:text="'Blue: ' + ${input.blue}">/>
+        <table>
+            <tr th:each="i: ${input.image}">
+                <td  th:each="item: ${i}" th:styleappend="'border-width: thin; border-style: solid;border-color:black'">
+                    <div th:if="${item eq 0}" th:text="${item}" th:styleappend="'height:50px;width:50px; background: black;border-width: bold;'"/>
+                    <div th:if="${item eq 1}" th:text="${item}" th:styleappend="'height:50px;width:50px;background: white;border-width: bold;'"/>
+                    <div th:if="${item eq 2}" th:text="${item}" th:styleappend="'height:50px;width:50px;background:rgb('+ ${input.red} +',' + ${input.green} + ','+${input.blue}+');border-width: bold;'"/>
+                    <div th:if="${item eq 3}" th:text="${item}" th:styleappend="'height:50px;width:50px;background:rgb('+ ${input.red} +',' + ${input.green} + ','+${input.blue}+');border-width: bold;'"/>
+                </td>
+            <tr>
+        </table>
+    </body>
+</html>
