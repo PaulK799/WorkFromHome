@@ -12,14 +12,6 @@ public class Position {
     private int y;
 
     /**
-     * Default Constructor for {@link Position}.
-     */
-    public Position() {
-        this.x = 0;
-        this.y = 0;
-    }
-
-    /**
      * Public constructor for the {@link Position}.
      *
      * @param x - The {@link Position} location on the x axis.

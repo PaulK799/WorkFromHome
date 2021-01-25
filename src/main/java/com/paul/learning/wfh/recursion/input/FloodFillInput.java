@@ -13,7 +13,12 @@ public class FloodFillInput {
     private int originalColor;
     private int newColor;
     private int[][] image;
+    private int iterations;
     private Position position;
+
+    FloodFillInput() {
+        this.iterations = 0;
+    }
 
     public int getRed() {
         return red;
@@ -69,5 +74,13 @@ public class FloodFillInput {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public int getIterations() {
+        return iterations;
+    }
+
+    public void setIterations(int iterations) {
+        this.iterations = iterations;
     }
 }

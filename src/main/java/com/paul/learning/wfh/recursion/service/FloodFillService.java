@@ -17,6 +17,7 @@ public class FloodFillService {
     private static final Logger LOGGER = LoggerFactory.getLogger(FloodFillService.class);
 
     public FloodFillInput floodFill(FloodFillInput floodFillInput) {
+        LOGGER.info("Starting Flood Fill");
         floodFillInput = fill(floodFillInput);
         return floodFillInput;
     }
@@ -35,9 +36,13 @@ public class FloodFillService {
         int row;
         int column;
 
+        int startRow = floodFillInput.getPosition().getXAxis();
+        int startCol = floodFillInput.getPosition().getYAxis();
+
         int cols = imageToFill.length - 1;
         int rows = imageToFill[0].length - 1;
 
+        int iterations = 0 ;
         while (!queue.isEmpty()) {
             Position position = queue.poll();
             row = position.getXAxis();
@@ -45,30 +50,41 @@ public class FloodFillService {
 
             int currentColor = imageToFill[row][column];
             if (currentColor == floodFillInput.getOriginalColor()) {
-                // Replace Color at current position.
-                imageToFill[row][column] = floodFillInput.getNewColor();
+
+                if (startRow == row && startCol == column) {
+                    imageToFill[row][column] = 4;
+                } else {
+                    // Replace Color at current position.
+                    imageToFill[row][column] = floodFillInput.getNewColor();
+                }
 
                 // North (x-1, y)
-                if (row > 0) {
-                    queue.add(new Position(row - 1, column));
+                Position north = new Position(row - 1, column);
+                if (row > 0 && !queue.contains(north) && imageToFill[north.getXAxis()][north.getYAxis()] == floodFillInput.getOriginalColor()) {
+                    queue.add(north);
                 }
 
                 // South (x+1,y)
-                if (row < rows) {
-                    queue.add(new Position(row + 1, column));
+                Position south = new Position(row + 1, column);
+                if (row < rows && !queue.contains(south) && imageToFill[south.getXAxis()][south.getYAxis()]  == floodFillInput.getOriginalColor()) {
+                    queue.add(south);
                 }
 
+                Position west = new Position(row, column - 1);
                 // West (x, y-1)
-                if (column > 0) {
-                    queue.add(new Position(row, column - 1));
+                if (column > 0 && !queue.contains(west) && imageToFill[west.getXAxis()][west.getYAxis()] == floodFillInput.getOriginalColor()) {
+                    queue.add(west);
                 }
 
                 // East (x, y + 1)
-                if (column < cols) {
-                    queue.add(new Position(row, column + 1));
+                Position east = new Position(row, column + 1);
+                if (column < cols && !queue.contains(east) && imageToFill[east.getXAxis()][east.getYAxis()] == floodFillInput.getOriginalColor()) {
+                    queue.add(east);
                 }
             }
+            iterations++;
         }
+        floodFillInput.setIterations(iterations);
         return floodFillInput;
     }
 }

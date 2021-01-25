@@ -2,8 +2,6 @@ package com.paul.learning.wfh.recursion.controllers;
 
 import com.paul.learning.wfh.recursion.input.FloodFillInput;
 import com.paul.learning.wfh.recursion.service.FloodFillService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
  */
 @Controller
 public class FloodFillController {
-    private static final Logger LOGGER = LoggerFactory.getLogger(FloodFillController.class);
 
     @Autowired
-    FloodFillService floodFillService;
+    protected FloodFillService floodFillService;
 
     @PostMapping("/fill")
     public String fill(@RequestBody FloodFillInput input, Model model) {
