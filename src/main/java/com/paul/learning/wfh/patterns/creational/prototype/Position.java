@@ -1,5 +1,8 @@
 package com.paul.learning.wfh.patterns.creational.prototype;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 import static com.paul.learning.wfh.constants.GlobalConstants.SEPARATOR_COMMA;
@@ -17,7 +20,8 @@ public class Position {
      * @param x - The {@link Position} location on the x axis.
      * @param y - The {@link Position} location on the y axis.
      */
-    public Position(int x, int y) {
+    @JsonCreator(mode = JsonCreator.Mode.PROPERTIES)
+    public Position(@JsonProperty("x") int x, @JsonProperty("y") int y) {
         this.x = x;
         this.y = y;
     }
