@@ -1,11 +1,11 @@
-package com.paul.learning.wfh.recursion.controllers;
+package com.paul.learning.wfh.floodfill.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.paul.learning.wfh.patterns.creational.prototype.Position;
-import com.paul.learning.wfh.recursion.input.FloodFillInput;
-import com.paul.learning.wfh.recursion.service.FloodFillService;
+import com.paul.learning.wfh.floodfill.input.FloodFillInput;
+import com.paul.learning.wfh.floodfill.service.FloodFillService;
 import com.paul.learning.wfh.sort.controllers.SortController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

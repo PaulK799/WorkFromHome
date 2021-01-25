@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.recursion;
+package com.paul.learning.wfh.floodfill;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

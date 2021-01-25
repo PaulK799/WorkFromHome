@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.recursion;
+package com.paul.learning.wfh.floodfill;
 
 import com.paul.learning.wfh.patterns.creational.prototype.Position;
 

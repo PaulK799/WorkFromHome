@@ -1,7 +1,7 @@
-package com.paul.learning.wfh.recursion.input;
+package com.paul.learning.wfh.floodfill.input;
 
 import com.paul.learning.wfh.patterns.creational.prototype.Position;
-import com.paul.learning.wfh.recursion.FloodFill;
+import com.paul.learning.wfh.floodfill.FloodFill;
 
 /**
  * POJO class representing the Input needed to perform {@link FloodFill}.

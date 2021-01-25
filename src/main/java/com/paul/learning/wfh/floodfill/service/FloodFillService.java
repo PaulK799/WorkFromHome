@@ -1,7 +1,7 @@
-package com.paul.learning.wfh.recursion.service;
+package com.paul.learning.wfh.floodfill.service;
 
 import com.paul.learning.wfh.patterns.creational.prototype.Position;
-import com.paul.learning.wfh.recursion.input.FloodFillInput;
+import com.paul.learning.wfh.floodfill.input.FloodFillInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

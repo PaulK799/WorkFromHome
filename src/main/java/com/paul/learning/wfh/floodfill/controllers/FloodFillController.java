@@ -1,7 +1,7 @@
-package com.paul.learning.wfh.recursion.controllers;
+package com.paul.learning.wfh.floodfill.controllers;
 
-import com.paul.learning.wfh.recursion.input.FloodFillInput;
-import com.paul.learning.wfh.recursion.service.FloodFillService;
+import com.paul.learning.wfh.floodfill.input.FloodFillInput;
+import com.paul.learning.wfh.floodfill.service.FloodFillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
