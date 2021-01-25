@@ -38,6 +38,9 @@ public class FloodFill {
         Queue<Position> queue = new ArrayDeque<>();
         queue.add(new Position(row, column));
 
+        int startRow = row;
+        int startCol = column;
+
         int cols = imageToFill.length - 1;
         int rows = imageToFill[0].length - 1;
 
@@ -48,27 +51,36 @@ public class FloodFill {
 
             int currentColor = imageToFill[row][column];
             if (currentColor == originalColor) {
-                // Replace Color at current position.
-                imageToFill[row][column] = newColor;
+
+                if (startRow == row && startCol == column) {
+                    imageToFill[row][column] = 4;
+                } else {
+                    // Replace Color at current position.
+                    imageToFill[row][column] = newColor;
+                }
 
                 // North (x-1, y)
-                if (row > 0) {
-                    queue.add(new Position(row - 1, column));
+                Position north = new Position(row - 1, column);
+                if (row > 0 && !queue.contains(north) && imageToFill[north.getXAxis()][north.getYAxis()] == originalColor) {
+                    queue.add(north);
                 }
 
                 // South (x+1,y)
-                if (row < rows) {
-                    queue.add(new Position(row + 1, column));
+                Position south = new Position(row + 1, column);
+                if (row < rows && !queue.contains(south) && imageToFill[south.getXAxis()][south.getYAxis()]  == originalColor) {
+                    queue.add(south);
                 }
 
+                Position west = new Position(row, column - 1);
                 // West (x, y-1)
-                if (column > 0) {
-                    queue.add(new Position(row, column - 1));
+                if (column > 0 && !queue.contains(west) && imageToFill[west.getXAxis()][west.getYAxis()] == originalColor) {
+                    queue.add(west);
                 }
 
                 // East (x, y + 1)
-                if (column < cols) {
-                    queue.add(new Position(row, column + 1));
+                Position east = new Position(row, column + 1);
+                if (column < cols && !queue.contains(east) && imageToFill[east.getXAxis()][east.getYAxis()] == originalColor) {
+                    queue.add(east);
                 }
             }
         }

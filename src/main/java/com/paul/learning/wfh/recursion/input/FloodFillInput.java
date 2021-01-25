@@ -16,7 +16,7 @@ public class FloodFillInput {
     private int iterations;
     private Position position;
 
-    FloodFillInput() {
+    public FloodFillInput() {
         this.iterations = 0;
     }
 
