@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Soduku Solver</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <table>
+            <tr th:each="i: ${input.board}">
+                <td  th:each="item: ${i}" th:styleappend="'border-width: thin; border-style: solid;border-color:black'">
+                    <div th:if="${item eq 0}" th:styleappend="'height:50px;width:50px;background: white;border-width: bold;'"/>
+                    <div th:if="${item &gt; 0}" th:text="${item}" th:styleappend="'height:50px;width:50px;background: white;border-width: bold;'"/>
+                </td>
+            <tr>
+        </table>
+    </body>
+</html>
