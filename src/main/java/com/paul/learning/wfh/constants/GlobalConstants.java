@@ -7,6 +7,7 @@ public final class GlobalConstants {
     private static final Logger LOGGER = LoggerFactory.getLogger(GlobalConstants.class);
     public static final String SEPARATOR_COMMA = " , ";
     public static final String SEPARATOR_SPACE = " ";
+    public static final String SEPARATOR = "";
     public static final String STRING_NEW_LINE ="\n";
 
     /**
