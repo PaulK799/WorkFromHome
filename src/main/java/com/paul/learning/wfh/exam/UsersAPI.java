@@ -46,22 +46,33 @@ public class UsersAPI {
         String url = "https://jsonmock.hackerrank.com/api/article_users?page=" + startPage;
         String response;
 
-        // Loop through each page.
+        // Break condition in processing.
         while (startPage <= totalPages) {
             try {
                 LOGGER.info("Processing Page: {}", startPage);
                 URL obj = new URL(url);
-                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-                con.setRequestMethod("GET");
-                InputStreamReader inputStreamReader = new InputStreamReader(con.getInputStream());
-                BufferedReader in = new BufferedReader(inputStreamReader);
-                while ((response = in.readLine()) != null) {
+                // Setup HTTP GET Request
+                HttpURLConnection connection = (HttpURLConnection) obj.openConnection();
+                connection.setRequestMethod("GET");
+                connection.setRequestProperty("Content-Type", "application/json; utf-8");
+
+                // Read from open connection.
+                InputStreamReader inputStreamReader = new InputStreamReader(connection.getInputStream());
+                BufferedReader buffy = new BufferedReader(inputStreamReader);
+
+                // Read response from the BufferedReader.
+                while ((response = buffy.readLine()) != null) {
+                    // Process using GSON to convert String JSON response into JsonResponse POJO.
                     totalPages = processResponseWithGson(response, totalPages, userNames, threshold);
                 }
-                in.close();
+
+                // Close open connection
+                buffy.close();
+
+                // Increment page.
                 startPage++;
-            } catch (Exception ex) {
-                ex.printStackTrace();
+            } catch (Exception exception) {
+                LOGGER.error("Exception found: {0}", exception);
             }
         }
 
@@ -81,31 +92,33 @@ public class UsersAPI {
         Gson gson = new Gson();
 
         // Parse using the JsonResponse defined per the schema.
-        JsonResponse json = gson.fromJson(response, JsonResponse.class);
-
-        if (json != null) {
-
+        JsonResponse jsonResponse = gson.fromJson(response, JsonResponse.class);
+        if (jsonResponse != null) {
             // Extract total_pages from JSON response and set as the total pages.
-            Integer total = json.getTotalPages();
+            Integer total = jsonResponse.getTotalPages();
 
+            // Set the total page only if its less than the totalPages previously extracted.
             if (total < totalPages) {
                 totalPages = total;
             }
 
-            List<Data> dataList = Optional.ofNullable(json.getData())
+            // Extract Data from the JSON response.
+            List<Data> dataList = Optional.ofNullable(jsonResponse.getData())
                     .orElseGet(ArrayList::new);
 
+            // Process each entry
             for (Data data : dataList) {
                 // Extract the Submission Count.
                 Integer submissionCount = data.getSubmissionCount();
 
-                // If exceeds thresh hold add in the username.
+                // If exceeds thresh hold add in the username, add to list of usernames.
                 if (submissionCount > threshold) {
                     String username = data.getUsername();
                     userNames.add(username);
                 }
             }
         }
+
         return totalPages;
     }
 
