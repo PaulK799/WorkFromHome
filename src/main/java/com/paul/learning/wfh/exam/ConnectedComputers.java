@@ -34,7 +34,7 @@ public class ConnectedComputers {
      * @return The minimum number of times you need to remove cables to connect the full network.
      */
     public static int makeConnected(int n, int[][] connections) {
-        int connected = 0;
+        int unmapped = 0;
         int cables = 0;
 
         Map<Integer, Integer> connectionMap = new HashMap<>();
@@ -52,21 +52,22 @@ public class ConnectedComputers {
             // Check if the current node connection creates a union.
             boolean isUnionExist = isUnion(from, to, connectionMap);
             if (isUnionExist) {
+                // Spare cable exists.
                 cables++;
             }
         }
 
-        // Count all of the connected nodes.
+        // Count all of the unmapped nodes.
         for (int index = 0; index < n; index++) {
             int valueAtIndex = getValue(index, connectionMap);
             if (valueAtIndex == index) {
-                connected++;
+                unmapped++;
             }
         }
 
-        //
-        if (cables >= connected - 1) {
-            return connected - 1;
+        // Spare cables exceeds the unmapped nodes - 1
+        if (cables >= unmapped - 1) {
+            return unmapped - 1;
         } else {
             // Not enough cables to link all nodes.
             return -1;
