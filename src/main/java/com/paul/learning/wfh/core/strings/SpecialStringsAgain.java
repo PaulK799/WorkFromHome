@@ -3,7 +3,9 @@ package com.paul.learning.wfh.core.strings;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -21,6 +23,59 @@ public class SpecialStringsAgain {
     private SpecialStringsAgain() {
         // Private Constructor
     }
+
+    static long substrCount(int n, String s) {
+        long count = 0L;
+        int[] numRepeatedMap = new int[s.length()];
+
+        // Case 1: All same characters
+        for (int i = 0; i < n; ) {
+            // count number of times a character is repeatedCharacterCounter.
+            long repeatedCharacterCounter = 1;
+
+            // Used to increment "i" to the location of j after processing to skip repeated characters..
+            int indexPlusOneCounter = i + 1;
+            for (int j = indexPlusOneCounter; j <n; j++) {
+                char current = s.charAt(j);
+                char previous = s.charAt(j -1);
+
+                // If identical, increment counter and move position.
+                if (current == previous) {
+                    repeatedCharacterCounter++;
+                    indexPlusOneCounter++;
+                } else {
+                    break;
+                }
+
+            }
+            count += (repeatedCharacterCounter * (repeatedCharacterCounter + 1)) / 2;
+            // For a string like aaabaa, this will look like 300120.
+            numRepeatedMap[i] = (int) repeatedCharacterCounter;
+
+
+            i = indexPlusOneCounter;
+        }
+
+        // Case 2: All characters except the middle one are same
+        for (int j = 1; j < n - 1; j++) {
+            char current = s.charAt(j);
+            char previous = s.charAt(j -1);
+            char next = s.charAt(j + 1);
+
+            if (current == previous) {
+                // Fix the array storing number of times characters are repeated.
+                numRepeatedMap[j] = numRepeatedMap[j - 1];
+                continue;
+            }
+
+            if (previous == next) {
+                count += Math.min(numRepeatedMap[j + 1], numRepeatedMap[j - 1]);
+            }
+        }
+
+        return count;
+    }
+
 
     /**
      * Returns the number of Special Substrings contained in the String.
@@ -66,7 +121,7 @@ public class SpecialStringsAgain {
         int length = text.length() - 1;
         int pivot = Math.max(length / 2, 0);
         if (text.length() > 2) {
-            List<String> list= new ArrayList<>(Arrays.asList(text.split("")));
+            List<String> list = new LinkedList<>(Arrays.asList(text.split("")));
             list.remove(pivot);
             Set<String> removedList = new HashSet<>(list);
             return removedList.size() == 1;
