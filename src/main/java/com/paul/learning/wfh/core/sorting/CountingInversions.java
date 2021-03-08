@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * In an array, arr, the elements at indices i and j (where i <= j ) form an inversion if arr[i]  > arr[j].
+ * In other words, inverted elements arr[i] and arr[j] are considered to be "out of order".
+ * To correct an inversion, we can swap adjacent elements.
+ */
 public class CountingInversions {
 
     public static long inversions =0L;
@@ -22,7 +27,7 @@ public class CountingInversions {
      * Performs Merge sort algorithm to sort the input value.
      *
      * @param array - Array list to be sorted.
-     * @return The sorted list.
+     * @return The number of inversions.
      */
     private static int[] mergeSort(int[] array) {
         int length = array.length;
