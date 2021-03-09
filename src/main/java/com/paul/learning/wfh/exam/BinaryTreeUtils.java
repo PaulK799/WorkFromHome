@@ -1,6 +1,6 @@
 package com.paul.learning.wfh.exam;
 
-public class MaxDepthBinaryTree {
+public class BinaryTreeUtils {
 
     /**
      * Calculate the maximum depth of the {@link TreeNode}.
