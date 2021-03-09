@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.pipeline;
 
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

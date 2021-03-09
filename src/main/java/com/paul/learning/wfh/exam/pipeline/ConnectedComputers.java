@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.pipeline;
 
 import java.util.HashMap;
 import java.util.Map;

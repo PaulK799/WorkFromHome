@@ -1,5 +1,6 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.pipeline;
 
+import com.paul.learning.wfh.exam.pipeline.UsersAPI;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

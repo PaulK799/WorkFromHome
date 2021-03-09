@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.binarytree;
 
 public class TreeNode {
     int val;

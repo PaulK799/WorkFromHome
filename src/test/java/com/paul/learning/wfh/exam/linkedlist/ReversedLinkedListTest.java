@@ -1,5 +1,7 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.linkedlist;
 
+import com.paul.learning.wfh.exam.linkedlist.ListNode;
+import com.paul.learning.wfh.exam.linkedlist.ReverseLinkedList;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

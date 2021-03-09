@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.linkedlist;
 
 /**
  * Definition for singly-linked list.

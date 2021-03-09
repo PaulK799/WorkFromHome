@@ -1,4 +1,6 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.linkedlist;
+
+import com.paul.learning.wfh.exam.linkedlist.ListNode;
 
 public class ReverseLinkedList {
 

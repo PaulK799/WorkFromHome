@@ -1,5 +1,7 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.binarytree;
 
+import com.paul.learning.wfh.exam.binarytree.BinaryTreeUtils;
+import com.paul.learning.wfh.exam.binarytree.TreeNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

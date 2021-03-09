@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.binarytree;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

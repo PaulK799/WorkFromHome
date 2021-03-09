@@ -1,4 +1,4 @@
-package com.paul.learning.wfh.exam;
+package com.paul.learning.wfh.exam.pipeline;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
