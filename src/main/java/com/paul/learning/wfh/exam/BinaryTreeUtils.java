@@ -15,4 +15,18 @@ public class BinaryTreeUtils {
 
         return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));
     }
+
+    /**
+     * Calculate the maximum depth of the {@link TreeNode}.
+     *
+     * @param root - The {@link TreeNode} being processed.
+     * @return The max depth of the {@link TreeNode}.
+     */
+    public int minDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return 1 + Math.min(minDepth(root.left), minDepth(root.right));
+    }
 }
