@@ -5,6 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 @SpringBootTest
 public class BinaryTreeUtilsTest {
 
@@ -79,5 +84,22 @@ public class BinaryTreeUtilsTest {
         TreeNode root = new TreeNode(0);
         int layers = binaryTreeUtils.minDepth(root);
         Assertions.assertEquals(1, layers);
+    }
+
+    @Test
+    public void complexLevelorder() {
+        TreeNode layerTwoLeft = new TreeNode(15, null, null);
+        TreeNode layerTwoRight = new TreeNode(7, null, null);
+        TreeNode rootLeft = new TreeNode(9, null, null);
+        TreeNode rootRight = new TreeNode(20, layerTwoLeft, layerTwoRight);
+        TreeNode root = new TreeNode(3, rootLeft, rootRight);
+
+        List<List<Integer>> expectedResultList = new ArrayList<>();
+        expectedResultList.add(Collections.singletonList(3));
+        expectedResultList.add(Arrays.asList(9, 20));
+        expectedResultList.add(Arrays.asList(15, 7));
+
+        List<List<Integer>> resultList = binaryTreeUtils.levelOrder(root);
+        Assertions.assertTrue(Arrays.deepEquals(expectedResultList.toArray(), resultList.toArray()));
     }
 }
