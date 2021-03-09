@@ -102,4 +102,14 @@ public class BinaryTreeUtilsTest {
         List<List<Integer>> resultList = binaryTreeUtils.levelOrder(root);
         Assertions.assertTrue(Arrays.deepEquals(expectedResultList.toArray(), resultList.toArray()));
     }
+
+    @Test
+    public void basicMaxPathTest() {
+        TreeNode rootLeft = new TreeNode(2);
+        TreeNode rootRight = new TreeNode(3);
+        TreeNode root = new TreeNode(1, rootLeft, rootRight);
+
+        int value = binaryTreeUtils.maxPathSum(root);
+        Assertions.assertEquals(6, value);
+    }
 }

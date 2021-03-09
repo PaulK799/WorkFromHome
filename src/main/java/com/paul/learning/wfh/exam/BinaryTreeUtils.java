@@ -7,6 +7,8 @@ import java.util.Queue;
 
 public class BinaryTreeUtils {
 
+    int maxValue;
+
     /**
      * Calculate the maximum depth of the {@link TreeNode}.
      *
@@ -80,5 +82,43 @@ public class BinaryTreeUtils {
             resultList.add(currentResultList);
         }
         return resultList;
+    }
+
+    /**
+     * A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them.
+     * A node can only appear in the sequence at most once.
+     * Note that the path does not need to pass through the root.
+     *
+     * The path sum of a path is the sum of the node's values in the path
+     * Given the root of a {@link TreeNode}, return the maximum path sum of any path.
+     *
+     * @param root - The {@link TreeNode} to be processed.
+     * @return The max sum path of the largest values stored.
+     */
+    public int maxPathSum(TreeNode root) {
+        maxValue = Integer.MIN_VALUE;
+
+        if (root == null) {
+            return 0;
+        }
+
+        maxPathTraversal(root);
+        return maxValue;
+    }
+
+    private int maxPathTraversal(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        // Get Max Path taking Left and Right values
+        int left = Math.max(0, maxPathTraversal(node.left));
+        int right = Math.max(0, maxPathTraversal(node.right));
+
+        // Compute value based on combination of Left, Right and Current Value Paths.
+        maxValue = Math.max(maxValue, left + right + node.val);
+
+        // Current Node Value + Max of either Left or Right.
+        return node.val + Math.max(left, right) ;
     }
 }
