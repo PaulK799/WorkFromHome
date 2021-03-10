@@ -114,4 +114,31 @@ public class BinaryTreeUtilsTest {
         int value = binaryTreeUtils.maxPathSum(root);
         Assertions.assertEquals(6, value);
     }
+
+    @Test
+    public void basicTreeNodeSerializationTest() {
+        TreeNode layerTwoLeft = new TreeNode(15, null, null);
+        TreeNode layerTwoRight = new TreeNode(7, null, null);
+        TreeNode rootLeft = new TreeNode(9, null, null);
+        TreeNode rootRight = new TreeNode(20, layerTwoLeft, layerTwoRight);
+        TreeNode root = new TreeNode(3, rootLeft, rootRight);
+
+        String serializedTree = binaryTreeUtils.serialize(root);
+        String expected = "3,9,null,null,20,15,null,null,7,null,null";
+        Assertions.assertEquals(expected, serializedTree);
+    }
+
+    @Test
+    public void basicTreeNodeDeserializationTest() {
+        TreeNode layerTwoLeft = new TreeNode(15, null, null);
+        TreeNode layerTwoRight = new TreeNode(7, null, null);
+        TreeNode rootLeft = new TreeNode(9, null, null);
+        TreeNode rootRight = new TreeNode(20, layerTwoLeft, layerTwoRight);
+        TreeNode expectedRoot = new TreeNode(3, rootLeft, rootRight);
+
+        String input = "3,9,null,null,20,15,null,null,7,null,null";
+        TreeNode treeNode = binaryTreeUtils.deserialize(input);
+
+        Assertions.assertTrue(expectedRoot.equals(treeNode));
+    }
 }
