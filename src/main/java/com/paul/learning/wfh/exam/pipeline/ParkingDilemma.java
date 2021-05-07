@@ -48,17 +48,13 @@ public class ParkingDilemma {
 
             // Find the target index which is index + offset. Min to ensure you do not exceed the bounds of the array.
             int targetIndex = Math.min(index + offset, sortedCars.size() - 1);
-
-            // Start Position of the car.
-            long startValue = sortedCars.get(index);
-            // End position relative to the offset
-            long targetValue = sortedCars.get(targetIndex);
+            long startPosCar = sortedCars.get(index);
+            long endPosByOffset = sortedCars.get(targetIndex);
 
             // If the number of cars between the start and target is great than or equal to K.
             if (targetIndex - index >= offset) {
-                // Distance = (end - start) + 1 to account for the current position itself
-                long distance = (targetValue - startValue) + 1;
-                // Check if minimum value.
+                long distance = (endPosByOffset - startPosCar) + 1;
+                // Check if distance less than minimum value.
                 minimumRoofLength = Math.min(distance, minimumRoofLength);
             }
 
